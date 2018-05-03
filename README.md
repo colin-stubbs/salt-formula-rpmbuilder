@@ -1,2 +1,3 @@
 # salt-formula-rpmbuilder
-Create/manage RPM build environments
+
+Deploy RPM build environment/s.

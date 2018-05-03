@@ -1,0 +1,4 @@
+rpmbuilder:
+  lookup:
+    locations:
+      home_basedir: /home

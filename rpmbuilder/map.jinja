@@ -1,0 +1,19 @@
+{% import_yaml 'rpmbuilder/defaults.yaml' as default_settings %}
+
+{% set os_family_map = salt['grains.filter_by']({
+    'default': {
+      'packages': [ 'rpm-build', 'redhat-rpm-config', 'rpmdevtools', 'rpm-sign', 'rpmlint', 'make', 'gcc' ],
+      'locations': {
+        'home_basedir': '/home',
+      }
+    },
+  }, grain='os_family', default='default', merge=salt['pillar.get']('rpmbuilder:lookup')) %}
+
+{% do default_settings.rpmbuilder.lookup.update(os_family_map) %}
+
+{% set rpmbuilder_settings = salt['pillar.get'](
+    'rpmbuilder',
+    default=default_settings.rpmbuilder,
+    merge=True,
+  )
+%}

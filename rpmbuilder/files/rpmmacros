@@ -1,0 +1,6 @@
+# ~rpmbuilder/.rpmmacros
+
+{% for option, option_value in rpmmacros.items() %}
+%{{ option }} {{ option_value }}{% endfor %}
+
+# EOF
